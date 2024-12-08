@@ -16,15 +16,12 @@ import com.example.cst338_project02_trivia.database.GymLogRepository;
 import com.example.cst338_project02_trivia.database.entities.GymLog;
 import com.example.cst338_project02_trivia.databinding.ActivityMainBinding;
 
-import java.util.ArrayList;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-
-    private ActivityMainBinding binding;
+    ActivityMainBinding binding;
 
     private GymLogRepository repository;
-
     public final static String TAG = "DAC_GYMLOG";
     String mExercise = "";
     double mWeight = 0.0;
@@ -37,40 +34,24 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        repository = GymLogRepository.getRepository(getApplication());
-
         binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
-
-        updateDisplay();
 
         binding.logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Toast.makeText(MainActivity.this, "It worked", Toast.LENGTH_SHORT).show();
                 getInformationFromDisplay();
-                insertGymlogRecord();
                 updateDisplay();
             }
         });
     }
 
-    private void insertGymlogRecord() {
-        if(mExercise.isEmpty()){
-            return;
-        }
-        GymLog log = new GymLog(mExercise, mWeight, mReps);
-        repository.insertGymLog(log);
-    }
-
     private void updateDisplay() {
-        ArrayList<GymLog> allLogs = repository.getAllLogs();
-        if(allLogs.isEmpty()){
-            binding.logDisplayTextView.setText(R.string.nothing_to_show);
-        }
-        StringBuilder sb = new StringBuilder();
-        for(GymLog log : allLogs){
-            sb.append(log);
-        }
-        binding.logDisplayTextView.setText(sb.toString());
+        String currentInfo = binding.logDisplayTextView.getText().toString();
+        String newDisplay = String.format(Locale.US,"Exercise:%s%nWeight:%.2f%nReps:%d%n=-=-=-=%n%s",
+                mExercise, mWeight, mReps, currentInfo);
+
+        binding.logDisplayTextView.setText(newDisplay);
     }
 
     private void getInformationFromDisplay() {
@@ -78,15 +59,14 @@ public class MainActivity extends AppCompatActivity {
 
         try {
             mWeight = Double.parseDouble(binding.weightInputEditText.getText().toString());
-        } catch (NumberFormatException e){
-            Log.d(TAG, "Error reading value from Weight edit text");
+        } catch (NumberFormatException e) {
+            Log.d(TAG, "Error reading value from weight edit text");
         }
 
         try {
             mReps = Integer.parseInt(binding.repsInputEditText.getText().toString());
-        } catch (NumberFormatException e){
-            Log.d(TAG, "Error reading value from Reps edit text");
+        } catch (NumberFormatException e) {
+            Log.d(TAG, "Error reading value from reps edit text");
         }
-
     }
 }
