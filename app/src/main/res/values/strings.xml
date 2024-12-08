@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">CST338_Project02_Trivia</string>
+    <string name="exercise">Exercise</string>
+    <string name="enter_and_exercise">Enter and exercise</string>
+    <string name="weight">Weight</string>
+    <string name="reps">Reps</string>
+    <string name="enter_number_of_reps">Enter number of reps</string>
+    <string name="enter_a_weight">Enter a weight</string>
+    <string name="log">Log</string>
+    <string name="nothing_to_show">Nothing to show</string>
 </resources>
