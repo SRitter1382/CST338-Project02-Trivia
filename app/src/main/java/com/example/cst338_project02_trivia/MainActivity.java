@@ -82,5 +82,6 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"Log: " + log.toString());
         //Error here
         repository.insertGymLog(log);
-    }*/
+    }
+     */
 }
