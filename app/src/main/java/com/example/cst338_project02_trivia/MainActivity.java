@@ -19,7 +19,7 @@ import com.example.cst338_project02_trivia.databinding.ActivityMainBinding;
 import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity {
-    ActivityMainBinding binding;
+    private ActivityMainBinding binding;
 
     private GymLogRepository repository;
     public final static String TAG = "DAC_GYMLOG";
@@ -34,13 +34,16 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        repository = GymLogRepository.getRepository(getApplication());
+
         binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
 
         binding.logButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "It worked", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "It worked", Toast.LENGTH_SHORT).show();
                 getInformationFromDisplay();
+                insertGymLogRecord();
                 updateDisplay();
             }
         });
@@ -50,7 +53,6 @@ public class MainActivity extends AppCompatActivity {
         String currentInfo = binding.logDisplayTextView.getText().toString();
         String newDisplay = String.format(Locale.US,"Exercise:%s%nWeight:%.2f%nReps:%d%n=-=-=-=%n%s",
                 mExercise, mWeight, mReps, currentInfo);
-
         binding.logDisplayTextView.setText(newDisplay);
     }
 
@@ -68,5 +70,15 @@ public class MainActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             Log.d(TAG, "Error reading value from reps edit text");
         }
+    }
+
+    private void insertGymLogRecord(){
+        GymLog log = new GymLog(mExercise,mWeight,mReps);
+        Log.d(TAG, "mExercise: " + mExercise);
+        Log.d(TAG, "mWeight: " + mWeight);
+        Log.d(TAG, "mReps: " + mReps);
+        Log.d(TAG,"Log: " + log.toString());
+        //Error here
+        repository.insertGymLog(log);
     }
 }
