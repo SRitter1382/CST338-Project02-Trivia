@@ -7,4 +7,7 @@
     <string name="enter_number_of_reps">Enter number of reps</string>
     <string name="enter_a_weight">Enter a weight</string>
     <string name="log">Log</string>
+    <string name="history">History</string>
+    <string name="movies">Movies</string>
+    <string name="welcome_to_the_trivia_game_choose_a_category">Welcome to the Trivia Game!\nChoose a Category!</string>
 </resources>

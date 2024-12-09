@@ -36,26 +36,28 @@ public class MainActivity extends AppCompatActivity {
 
         repository = GymLogRepository.getRepository(getApplication());
 
-        binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
+        /**
+         binding.logDisplayTextView.setMovementMethod(new ScrollingMovementMethod());
 
-        binding.logButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //Toast.makeText(MainActivity.this, "It worked", Toast.LENGTH_SHORT).show();
-                getInformationFromDisplay();
-                insertGymLogRecord();
-                updateDisplay();
-            }
-        });
+         binding.logButton.setOnClickListener(new View.OnClickListener() {
+        @Override public void onClick(View v) {
+        //Toast.makeText(MainActivity.this, "It worked", Toast.LENGTH_SHORT).show();
+        getInformationFromDisplay();
+        insertGymLogRecord();
+        updateDisplay();
+        }
+        });*/
     }
 
     private void updateDisplay() {
         String currentInfo = binding.logDisplayTextView.getText().toString();
-        String newDisplay = String.format(Locale.US,"Exercise:%s%nWeight:%.2f%nReps:%d%n=-=-=-=%n%s",
+        String newDisplay = String.format(Locale.US, "Exercise:%s%nWeight:%.2f%nReps:%d%n=-=-=-=%n%s",
                 mExercise, mWeight, mReps, currentInfo);
         binding.logDisplayTextView.setText(newDisplay);
     }
 
+
+    /**
     private void getInformationFromDisplay() {
         mExercise = binding.exerciseInputEditText.getText().toString();
 
@@ -70,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             Log.d(TAG, "Error reading value from reps edit text");
         }
-    }
+    }&/
 
     private void insertGymLogRecord(){
         GymLog log = new GymLog(mExercise,mWeight,mReps);
@@ -80,5 +82,5 @@ public class MainActivity extends AppCompatActivity {
         Log.d(TAG,"Log: " + log.toString());
         //Error here
         repository.insertGymLog(log);
-    }
+    }*/
 }
