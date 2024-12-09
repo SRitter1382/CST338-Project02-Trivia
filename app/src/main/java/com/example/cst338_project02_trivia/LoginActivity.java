@@ -47,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
     private void verifyUser() {
         String username = binding.usernameLoginEditText.getText().toString();
         String password = binding.passwordLoginEditText.getText().toString();
-        int incorrectUsernameCount = 1;
-        int incorrectPasswordCount = 1;
+        int incorrectUsernameCount = 0;
+        int incorrectPasswordCount = 0;
 
         if(username.isEmpty() || password.isEmpty()){
             Toast.makeText(this, "Username or password can't be blank!", Toast.LENGTH_SHORT).show();
@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity {
                 //Toast.makeText(this, "ArrayList size " + userInfoArrayList.size(), Toast.LENGTH_SHORT).show();
                 Log.d(MainActivity.TAG, "For Loop begin");
                 //Crashing on for-loop if password is incorrect
-                for (int i = 1; i <= userInfoArrayList.size(); i++){
+                for (int i = 0; i < userInfoArrayList.size(); i++){
                     if(username.equals(userInfoArrayList.get(i).getUsername())){
                         if(password.equals(userInfoArrayList.get(i).getPassword())){
                             //Toast.makeText(this, "$$$ LOGIN SUCCESSFUL $$$", Toast.LENGTH_SHORT).show();
@@ -82,6 +82,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (incorrectUsernameCount == userInfoArrayList.size() ||
                         incorrectPasswordCount == userInfoArrayList.size()){
                     Toast.makeText(this, "Incorrect Username or Password", Toast.LENGTH_SHORT).show();
+                    Log.d(MainActivity.TAG, "Incorrect Username or Password");
                     Intent intent = LoginActivity.loginIntentFactory(getApplicationContext());
                     startActivity(intent);
                 }
