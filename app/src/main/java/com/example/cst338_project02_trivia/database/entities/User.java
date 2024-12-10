@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity(tableName="user_table")
 public class User {
-    @PrimaryKey
+    @PrimaryKey(autoGenerate = true)
     private int userid;
     private String username;
     private String password;

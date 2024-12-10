@@ -14,9 +14,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.Future;
 
 public class TriviaRepository {
-    private UserDAO userDAO;
+    private final UserDAO userDAO;
     private static TriviaRepository repository;
-    TriviaRepository(Application application) {
+    private TriviaRepository(Application application) {
         TriviaDatabase db = TriviaDatabase.getDatabase(application);
         this.userDAO = db.userDAO();
     }
@@ -25,7 +25,7 @@ public class TriviaRepository {
         if (repository != null) {
             return repository;
         }
-        Future<TriviaRepository> future =TriviaDatabase.databaseWriteExecutor.submit(
+        Future<TriviaRepository> future = TriviaDatabase.databaseWriteExecutor.submit(
                 new Callable<TriviaRepository>() {
                     @Override
                     public TriviaRepository call() throws Exception {
@@ -53,7 +53,7 @@ public class TriviaRepository {
         return userDAO.getUserByUserId(id);
     }
 
-    void insert(User user) {
+    public void insert(User... user) {
         TriviaDatabase.databaseWriteExecutor.execute(() -> {
             userDAO.insert(user);
         });
