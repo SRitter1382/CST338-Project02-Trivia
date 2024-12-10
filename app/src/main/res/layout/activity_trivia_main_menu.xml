@@ -8,43 +8,53 @@
     tools:context=".TriviaMainMenu">
 
     <TextView
+        android:id="@+id/welcomeToTheGame"
         android:layout_width="370dp"
         android:layout_height="200dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
         android:text="Welcome to the Trivia Game!\nChoose a Category!"
         android:textSize="42sp"
-        android:gravity="center"
-        android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginTop="60dp"
-        android:id="@+id/welcomeToTheGame"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
+        android:id="@+id/musicSelectButton"
         android:layout_width="250dp"
         android:layout_height="125dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
         android:text="@string/movies"
         android:textSize="48sp"
-        android:gravity="center"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/welcomeToTheGame"
-        android:id="@+id/musicSelectButton"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomeToTheGame" />
 
     <Button
+        android:id="@+id/historySelectButton"
         android:layout_width="250dp"
         android:layout_height="125dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
         android:text="@string/history"
         android:textSize="48sp"
-        android:gravity="center"
-        android:layout_marginTop="25dp"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/musicSelectButton"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/musicSelectButton" />
+
+    <Button
+        android:id="@+id/highScoresSelectButton"
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:layout_marginTop="25dp"
+        android:gravity="center"
+        android:text="@string/high_scores"
+        android:textSize="42sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/historySelectButton" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
