@@ -2,4 +2,6 @@
     <string name="app_name">CST338_Project02_Trivia</string>
     <string name="enter_a_username">Enter a username</string>
     <string name="enter_a_password">Enter a password</string>
+    <string name="history">History</string>
+    <string name="movies">Movies</string>
 </resources>

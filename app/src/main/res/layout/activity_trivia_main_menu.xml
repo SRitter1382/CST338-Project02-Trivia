@@ -8,14 +8,43 @@
     tools:context=".TriviaMainMenu">
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LFG!!!!!"
-        android:textSize="90sp"
+        android:layout_width="370dp"
+        android:layout_height="200dp"
+        android:text="Welcome to the Trivia Game!\nChoose a Category!"
+        android:textSize="42sp"
+        android:gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="60dp"
+        android:id="@+id/welcomeToTheGame"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:text="@string/movies"
+        android:textSize="48sp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/welcomeToTheGame"
+        android:id="@+id/musicSelectButton"
+        />
+
+    <Button
+        android:layout_width="250dp"
+        android:layout_height="125dp"
+        android:text="@string/history"
+        android:textSize="48sp"
+        android:gravity="center"
+        android:layout_marginTop="25dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/musicSelectButton"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
